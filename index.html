@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accueil | RC Lens</title>
+
+    <style>
+
+        /* ==================================================
+           RÉGLAGES GÉNÉRAUX
+        ================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #d50912;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ==================================================
+           TITRES
+        ================================================== */
+
+        h1 {
+            color: #ffe500;
+            font-family: Georgia, serif;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 4px #000;
+            margin: 25px 0;
+        }
+
+        h2 {
+            font-family: Georgia, serif;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        h3 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #palmares {
+            box-shadow: 0 0 15px black;
+            border: 3px solid white;
+            border-radius: 15px;
+        }
+
+        #palmares h2 {
+            text-shadow: 3px 3px 5px black;
+        }
+
+        /* ==================================================
+           PARAGRAPHES
+        ================================================== */
+
+        p {
+            text-align: justify;
+        }
+
+        .texte-italique {
+            font-style: italic;
+        }
+
+        .texte-gras {
+            font-weight: bold;
+        }
+
+        .texte-souligne {
+            text-decoration: underline;
+        }
+
+        /* ==================================================
+           BANDEAU NOIR
+        ================================================== */
+
+        .top-bar {
+            width: 100%;
+            height: 45px;
+            background: #050505;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .top-bar span {
+            color: white;
+        }
+
+        .top-links {
+            position: absolute;
+            right: 30px;
+
+            display: flex;
+            gap: 25px;
+        }
+
+        .top-links a {
+            color: white;
+            text-decoration: none;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            transition: color 0.2s;
+        }
+
+        .top-links a:hover {
+            color: #ffe500;
+        }
+
+        /* ==================================================
+           NAVIGATION PRINCIPALE
+        ================================================== */
+
+        .main-header {
+            width: 100%;
+            height: 80px;
+
+            background: #d50912;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 30px;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-button {
+            width: 35px;
+            height: 35px;
+
+            border: none;
+            background: transparent;
+
+            color: #ffe500;
+
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .navigation {
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 30px;
+        }
+
+        .navigation a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            transition: color 0.2s;
+        }
+
+        .navigation a:hover {
+            color: #ffe500;
+        }
+
+        .navigation a.actif {
+            border-bottom: 4px solid #ffd700;
+            padding-bottom: 8px;
+        }
+
+        /* ==================================================
+           LOGO
+        ================================================== */
+
+        .logo {
+            width: 58px;
+            height: 65px;
+
+            background: #ffe500;
+            color: #d50912;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: 900;
+
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                100% 85%,
+                50% 100%,
+                0 85%
+            );
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        /* ==================================================
+           BOUTONS À DROITE
+        ================================================== */
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-actions button {
+            width: 32px;
+            height: 32px;
+
+            border: none;
+            border-radius: 5px;
+
+            background: #ffe500;
+            color: #111;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            transition: transform 0.2s;
+        }
+
+        .header-actions button:hover {
+            transform: scale(1.1);
+        }
+
+        /* ==================================================
+           CONTENU PRINCIPAL
+        ================================================== */
+
+        .contenu-principal {
+            width: 90%;
+            margin: 25px auto;
+            padding: 10px;
+
+            border: 2px solid #ffe500;
+            border-radius: 20px;
+
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ==================================================
+           CARROUSEL
+        ================================================== */
+
+        .carousel {
+            width: 90%;
+            margin: 25px auto 0;
+
+            position: relative;
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            background: #111;
+        }
+
+        .slides {
+            width: 100%;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+
+            width: 100%;
+            position: relative;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+
+            /* Transparence demandée dans le cahier des charges */
+            opacity: 0.95;
+        }
+
+        /* ==================================================
+           DÉGRADÉ
+        ================================================== */
+
+        .slide::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background: linear-gradient(
+                transparent 45%,
+                rgba(0, 0, 0, 0.85)
+            );
+        }
+
+        /* ==================================================
+           TEXTE DU CARROUSEL
+        ================================================== */
+
+        .slide-content {
+            position: absolute;
+
+            left: 35px;
+            bottom: 35px;
+
+            z-index: 3;
+
+            max-width: 650px;
+        }
+
+        .slide-content h2 {
+            color: white;
+
+            font-size: 28px;
+            font-weight: 900;
+
+            margin-bottom: 8px;
+        }
+
+        .slide-content p {
+            color: white;
+            font-size: 13px;
+        }
+
+        /* ==================================================
+           BOUTONS DU CARROUSEL
+        ================================================== */
+
+        .carousel-button {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            z-index: 5;
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #ffe500;
+            color: #111;
+
+            font-size: 30px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: all 0.2s;
+        }
+
+        .carousel-button:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .previous {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        /* ==================================================
+           POINTS DU CARROUSEL
+        ================================================== */
+
+        .carousel-dots {
+            position: absolute;
+
+            z-index: 5;
+
+            bottom: 15px;
+            right: 25px;
+
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            opacity: 0.5;
+
+            cursor: pointer;
+
+            transition: all 0.2s;
+        }
+
+        .dot:hover {
+            transform: scale(1.3);
+        }
+
+        .dot.active {
+            background: #ffe500;
+            opacity: 1;
+        }
+
+        /* ==================================================
+           PALMARÈS
+        ================================================== */
+
+        .palmares {
+            width: 90%;
+
+            margin: 55px auto 80px;
+
+            display: block;
+        }
+
+        .palmares h2 {
+            text-align: center;
+
+            color: #ffe500;
+
+            font-size: 30px;
+            font-weight: 900;
+
+            margin-bottom: 25px;
+        }
+
+        .palmares > p {
+            margin: 15px 0;
+        }
+
+        /* ==================================================
+           CARTES DES TROPHÉES
+        ================================================== */
+
+        .trophies {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+        .trophy-card {
+            min-height: 190px;
+
+            background: #050505;
+
+            border: 3px solid #ffe500;
+            border-radius: 18px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 20px;
+
+            transition: transform 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        /* Changement d'apparence au survol */
+        .trophy-card:hover {
+            transform: translateY(-8px) scale(1.02);
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+       .trophy-icon img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+        .trophy-card h3 {
+            color: #ffe500;
+
+            font-size: 14px;
+
+            margin-bottom: 8px;
+        }
+
+        .trophy-card p {
+            color: white;
+
+            font-size: 12px;
+        }
+
+        /* ==================================================
+           VIDÉOS
+        ================================================== */
+
+       .videos {
+    width: 90%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.videos h2 {
+    color: #ffe500;
+    margin-bottom: 25px;
+}
+
+.videos iframe {
+    width: 45%;
+    height: 300px;
+    margin: 10px;
+
+    border: 4px solid #d71920;
+    border-radius: 15px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Téléphone */
+
+@media (max-width: 700px) {
+
+    .videos iframe {
+        width: 90%;
+        height: 250px;
+    }
+
+}
+
+        /* ==================================================
+           LIEN PALMARÈS
+        ================================================== */
+
+        .palmares-link {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 12px 25px;
+
+            background: #d71920;
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            border-radius: 10px;
+
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+            transition: all 0.2s;
+        }
+
+        .palmares-link:hover {
+            background: #ffd500;
+            color: #111;
+
+            transform: scale(1.05);
+        }
+
+        /* ==================================================
+           INFO-BULLES / LIENS
+        ================================================== */
+
+        a[title] {
+            cursor: pointer;
+        }
+
+        /* ==================================================
+           ADAPTATION ÉCRAN
+        ================================================== */
+
+        @media (max-width: 900px) {
+
+            .navigation {
+                gap: 12px;
+            }
+
+            .navigation a {
+                font-size: 10px;
+            }
+
+            .carousel {
+                width: 95%;
+            }
+
+            .trophies {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .videos video {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .main-header {
+                padding: 0 10px;
+            }
+
+            .navigation {
+                gap: 7px;
+            }
+
+            .navigation a {
+                font-size: 8px;
+            }
+
+            .top-links {
+                display: none;
+            }
+
+            .trophies {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-content {
+                left: 20px;
+                bottom: 20px;
+            }
+
+            .slide-content h2 {
+                font-size: 20px;
+            }
+
+            .videos video {
+                width: 95%;
+                height: 250px;
+            }
+        }
+
+        /* ==================================================
+           FLÈCHES DE NAVIGATION
+        ================================================== */
+
+        .fleches-navigation {
+            position: fixed !important;
+
+            right: 20px !important;
+            left: auto !important;
+
+            top: 50% !important;
+            bottom: auto !important;
+
+            transform: translateY(-50%);
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+
+            z-index: 9999;
+        }
+
+        .fleches-navigation button {
+            width: 45px;
+            height: 45px;
+
+            border: 2px solid white;
+            border-radius: 50%;
+
+            background-color: #ffe500;
+            color: #000;
+
+            font-size: 25px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 3px 8px black;
+        }
+
+        .fleches-navigation button:hover {
+            background-color: #000;
+            color: #ffe500;
+
+            transform: scale(1.1);
+        }
+        /* ==================================================
+   ENTREPRISES ET CONTACT
+================================================== */
+
+.informations-site {
+    width: 90%;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.info-card {
+    background: #050505;
+    border: 3px solid #ffe500;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.info-card h2 {
+    color: #ffe500;
+    margin-bottom: 20px;
+}
+
+.info-card p {
+    line-height: 1.6;
+}
+
+.info-card a {
+    color: #ffe500;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.info-card a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .informations-site {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================================================
+   MENU DÉROULANT
+================================================== */
+
+.menu-deroulant {
+    display: none;
+
+    position: absolute;
+    top: 80px;
+    left: 20px;
+
+    width: 230px;
+
+    background: #050505;
+
+    border: 2px solid #ffe500;
+    border-radius: 12px;
+
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+
+    z-index: 9999;
+
+    padding: 10px 0;
+}
+
+.menu-deroulant.ouvert {
+    display: block;
+}
+
+.menu-deroulant a {
+    display: block;
+
+    padding: 14px 20px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+    font-size: 14px;
+
+    text-align: left;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+.menu-deroulant a:hover {
+    background: #ffe500;
+    color: #111;
+}
+
+/* ==================================================
+   FENÊTRE DE RECHERCHE
+================================================== */
+
+.fenetre-recherche {
+    display: none;
+
+    position: absolute;
+    top: 95px;
+    right: 30px;
+
+    background: #050505;
+
+    padding: 12px;
+
+    border: 2px solid #ffe500;
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+
+    z-index: 9999;
+}
+
+.fenetre-recherche.ouverte {
+    display: flex;
+    gap: 8px;
+}
+
+.fenetre-recherche input {
+    width: 220px;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    outline: none;
+}
+
+.fenetre-recherche button {
+    background: #ffe500;
+    color: #111;
+
+    border: none;
+    border-radius: 6px;
+
+    padding: 0 12px;
+
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   FENÊTRE COMPTE
+================================================== */
+
+.fenetre-compte {
+    display: none;
+
+    position: absolute;
+    top: 95px;
+    right: 30px;
+
+    width: 250px;
+
+    background: #050505;
+
+    color: white;
+
+    padding: 20px;
+
+    border: 2px solid #ffe500;
+    border-radius: 12px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+
+    z-index: 9999;
+}
+
+.fenetre-compte.ouverte {
+    display: block;
+}
+
+.fenetre-compte h3 {
+    color: #ffe500;
+    margin-bottom: 15px;
+}
+
+.fenetre-compte p {
+    margin-bottom: 15px;
+}
+
+.fenetre-compte button {
+    background: #ffe500;
+    color: #111;
+
+    border: none;
+    border-radius: 6px;
+
+    padding: 10px 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         BANDEAU NOIR
+    ================================================== -->
+
+    <div class="top-bar">
+
+        <span>⚒ FIERS D'ÊTRE LENSOIS ⚒</span>
+
+        <div class="top-links">
+
+            <a href="#entreprises" title="Voir les partenaires et entreprises">
+    ENTREPRISES
+</a>
+
+<a href="#contact" title="Voir les informations de contact">
+    CONTACT
+</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         NAVIGATION
+    ================================================== -->
+
+    <header class="main-header">
+
+        <button
+    class="menu-button"
+    type="button"
+    onclick="ouvrirMenu()"
+    title="Ouvrir le menu"
+    aria-label="Ouvrir le menu"
+>
+    ☰
+</button>
+
+
+        <nav class="navigation">
+
+            <!-- Lien vers une page web existante -->
+            <a
+                href="https://www.rclens.fr/fr/news"
+                target="_blank"
+                title="Ouvrir les actualités du RC Lens dans une nouvelle fenêtre"
+            >
+                ACTUALITÉS
+            </a>
+
+
+            <!-- Deuxième lien vers une page web existante -->
+            <a
+                href="https://www.rclens.fr/fr/photos-videos"
+                target="_blank"
+                title="Ouvrir les médias du RC Lens dans une nouvelle fenêtre"
+            >
+                MÉDIAS
+            </a>
+
+
+            <!-- Logo -->
+            <div class="logo">
+
+                <img
+                    src="logo rcl.png"
+                    alt="Logo du Racing Club de Lens"
+                    title="Logo du Racing Club de Lens"
+                >
+
+            </div>
+
+
+            <!-- Lien vers la billetterie -->
+            <a
+                href="https://billetterie.rclens.fr/"
+                target="_blank"
+                title="Ouvrir la billetterie du RC Lens dans une nouvelle fenêtre"
+            >
+                BILLETTERIE
+            </a>
+
+
+            <!-- Lien vers ma deuxième page -->
+            <a
+                href="palmares.html"
+                target="_blank"
+                title="Ouvrir la page du palmarès dans une nouvelle fenêtre"
+            >
+                PALMARÈS
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                title="Rechercher"
+            >
+                ⌕
+            </button>
+
+            <button
+                type="button"
+                title="Compte"
+            >
+                ♙
+            </button>
+
+        </div>
+        <!-- ==================================================
+     RECHERCHE
+================================================== -->
+
+<div class="fenetre-recherche" id="fenetreRecherche">
+
+    <input
+        type="text"
+        id="champRecherche"
+        placeholder="Rechercher sur le site..."
+        onkeydown="rechercher(event)"
+    >
+
+    <button
+        type="button"
+        onclick="rechercher()"
+    >
+        🔍
+    </button>
+
+</div>
+
+
+<!-- ==================================================
+     COMPTE
+================================================== -->
+
+<div class="fenetre-compte" id="fenetreCompte">
+
+    <h3>👤 Mon compte</h3>
+
+    <p>
+        Cette fonctionnalité permettrait de gérer
+        votre compte utilisateur.
+    </p>
+
+    <button
+        type="button"
+        onclick="fermerCompte()"
+    >
+        Fermer
+    </button>
+
+</div>
+
+    </header>
+    <!-- ==================================================
+     MENU DÉROULANT
+================================================== -->
+
+<div class="menu-deroulant" id="menuDeroulant">
+
+    <a href="#palmares">
+        🏆 Palmarès
+    </a>
+
+    <a href="#entreprises">
+        🤝 Entreprises
+    </a>
+
+    <a href="#contact">
+        📞 Contact
+    </a>
+
+    <a
+        href="https://www.rclens.fr/fr/news"
+        target="_blank"
+    >
+        📰 Actualités
+    </a>
+
+    <a
+        href="https://www.rclens.fr/fr/photos-videos"
+        target="_blank"
+    >
+        🎥 Médias
+    </a>
+
+    <a
+        href="https://billetterie.rclens.fr/"
+        target="_blank"
+    >
+        🎟️ Billetterie
+    </a>
+
+</div>
+
+
+    <!-- ==================================================
+         TITRE PRINCIPAL
+    ================================================== -->
+
+    <h1>Racing Club de Lens</h1>
+
+
+    <!-- ==================================================
+         CONTENU PRINCIPAL
+    ================================================== -->
+
+    <div class="contenu-principal">
+
+
+        <!-- ==================================================
+             CARROUSEL
+        ================================================== -->
+
+        <section class="carousel">
+
+            <div class="slides">
+
+
+                <!-- IMAGE 1 -->
+
+                <div class="slide active">
+
+                    <img
+                        src="Image 1.jpg"
+                        alt="Stade Bollaert-Delelis"
+                        title="Découvrez le stade Bollaert-Delelis"
+                    >
+
+                    <div class="slide-content">
+
+                        <h2>
+                            LE STADE BOLLAERT-DELELIS
+                        </h2>
+
+                        <p class="texte-gras">
+                            Le Racing Club de Lens est un club historique.
+                        </p>
+
+                        <p class="texte-italique">
+                            Découvrez l'histoire du club et de ses joueurs.
+                        </p>
+
+                        <p class="texte-souligne">
+                            Retrouvez toutes les actualités du RC Lens.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 2 -->
+
+                <div class="slide">
+
+                    <img
+                        src="Image 2.jpg"
+                        alt="Joueurs du Racing Club de Lens"
+                        title="Découvrez les joueurs du Racing Club de Lens"
+                    >
+
+                    <div class="slide-content">
+
+                        <h2>
+                            RÉSERVER MES BILLETS
+                        </h2>
+
+                        <p>
+                            Pour le prochain match du Racing Club de Lens
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOUTON GAUCHE -->
+
+            <button
+                class="carousel-button previous"
+                type="button"
+                onclick="previousSlide()"
+                title="Afficher l'image précédente"
+            >
+                ‹
+            </button>
+
+
+            <!-- BOUTON DROITE -->
+
+            <button
+                class="carousel-button next"
+                type="button"
+                onclick="nextSlide()"
+                title="Afficher l'image suivante"
+            >
+                ›
+            </button>
+
+
+            <!-- POINTS -->
+
+            <div class="carousel-dots">
+
+                <span
+                    class="dot active"
+                    onclick="showSlide(0)"
+                    title="Afficher la première image"
+                >
+                </span>
+
+                <span
+                    class="dot"
+                    onclick="showSlide(1)"
+                    title="Afficher la deuxième image"
+                >
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             PALMARÈS
+        ================================================== -->
+
+        <section
+            class="palmares"
+            id="palmares"
+        >
+
+            <h2>
+                ⚒ LE PALMARÈS ⚒
+            </h2>
+
+
+            <p style="text-align: justify; font-style: italic; font-weight: bold;">
+
+                Fondé en 1906, le Racing Club de Lens est un club de football français emblématique ancré dans le bassin minier du Pas-de-Calais. Surnommés les « Sang et Or » en raison de leurs couleurs historiques, les Lensois partagent un lien fusionnel et populaire avec leur région, incarné par l'atmosphère unique de leur stade mythique, le Stade Bollaert-Delelis.
+
+                Le club possède un palmarès remarquable marqué par un titre de champion de France obtenu en 1998, ainsi qu'une victoire historique en Coupe de France. Porté par des valeurs de solidarité, de travail et de ferveur populaire héritées de la tradition minière, le RC Lens continue de s'affirmer comme une place forte du football français, engagé en Ligue 1 et soutenu par l'une des communautés de supporters les plus fidèles et chaleureuses du pays.
+
+            </p>
+
+
+            <p style="text-align: justify; font-style: italic; font-weight: bold; text-decoration: underline;">
+
+                Découvrez quelques-uns des principaux trophées remportés par le club.
+
+            </p>
+
+
+            <!-- ==================================================
+                 CARTES DES TROPHÉES
+            ================================================== -->
+
+            <div class="trophies">
+
+    <!-- CHAMPION DE FRANCE -->
+    <div class="trophy-card">
+
+        <div class="trophy-icon">
+            <img src="logoligue1.png"
+                 alt="Trophée de Champion de France"
+                 title="Champion de France 1997-1998">
+        </div>
+
+        <h3>
+            CHAMPION DE FRANCE
+        </h3>
+
+        <p>
+            1997 - 1998
+        </p>
+
+    </div>
+
+
+    <!-- COUPE DE LA LIGUE -->
+    <div class="trophy-card">
+
+        <div class="trophy-icon">
+            <img src="logocoupedelaligue.svg"
+                 alt="Trophée de la Coupe de la Ligue"
+                 title="Coupe de la Ligue 1998-1999">
+        </div>
+
+        <h3>
+            COUPE DE LA LIGUE
+        </h3>
+
+        <p>
+            1998 - 1999
+        </p>
+
+    </div>
+
+
+    <!-- COUPE DE FRANCE -->
+    <div class="trophy-card">
+
+        <div class="trophy-icon">
+            <img src="coupedefrancelogo.svg"
+                 alt="Trophée de la Coupe de France"
+                 title="Coupe de France 2025-2026">
+        </div>
+
+        <h3>
+            COUPE DE FRANCE
+        </h3>
+
+        <p>
+            2025 - 2026
+        </p>
+
+    </div>
+
+
+    <!-- COUPE GAMBARDELLA -->
+    <div class="trophy-card">
+
+        <div class="trophy-icon">
+            <img src="logocoupegambardella.svg"
+                 alt="Trophée de la Coupe Gambardella"
+                 title="Coupe Gambardella : 1957, 1958 et 1992">
+        </div>
+
+        <h3>
+            COUPE GAMBARDELLA
+        </h3>
+
+        <p>
+            1957 • 1958 • 1992
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+     ENTREPRISES ET CONTACT
+================================================== -->
+
+<section class="informations-site">
+
+
+    <!-- ENTREPRISES -->
+
+    <div class="info-card" id="entreprises">
+
+        <h2>
+            🤝 ENTREPRISES
+        </h2>
+
+        <p>
+            Le Racing Club de Lens est accompagné par de nombreux
+            partenaires et entreprises qui participent au développement
+            et à la vie du club.
+        </p>
+
+        <p>
+            Retrouvez les informations concernant les partenaires
+            du RC Lens sur le site officiel du club.
+        </p>
+
+        <p>
+            <a
+                href="https://www.bollaertbusinessteam.fr/"
+                target="_blank"
+                title="Ouvrir le site officiel du RC Lens dans une nouvelle fenêtre"
+            >
+                → Site officiel du RC Lens
+            </a>
+        </p>
+
+    </div>
+
+
+    <!-- CONTACT -->
+
+    <div class="info-card" id="contact">
+
+        <h2>
+            📞 CONTACT
+        </h2>
+
+        <p>
+            Pour retrouver toutes les informations concernant
+            le Racing Club de Lens, vous pouvez consulter
+            les différents services du site officiel.
+        </p>
+
+        <p>
+            <a
+                href="https://billetterie.rclens.fr/fr/contact"
+                target="_blank"
+                title="Ouvrir le site officiel du RC Lens dans une nouvelle fenêtre"
+            >
+                🌐 Site officiel
+            </a>
+        </p>
+
+        <p>
+            <a
+                href="https://www.rclens.fr/fr/news"
+                target="_blank"
+                title="Ouvrir les actualités du RC Lens dans une nouvelle fenêtre"
+            >
+                📰 Actualités
+            </a>
+        </p>
+
+    </div>
+
+
+</section>
+
+             <!-- ==================================================
+     VIDÉOS YOUTUBE
+================================================== -->
+
+<section class="videos">
+
+    <h2>⚽ LE RC LENS EN VIDÉO ⚽</h2>
+
+    <!-- VIDÉO 1 -->
+    <iframe
+        src="https://youtu.be/GENssCCMMkI?si=jCGgul07AGzP1fkg"
+        title="Vidéo du RC Lens"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+    <!-- VIDÉO 2 -->
+    <iframe
+        src="https://www.youtube.com/embed/qSaiTDgzKSo"
+        title="Vidéo du RC Lens"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</section>
+
+
+            <!-- ==================================================
+                 LIEN VERS LA DEUXIÈME PAGE
+            ================================================== -->
+
+            <a
+                href="palmares.html"
+                target="_blank"
+                class="palmares-link"
+                title="Ouvrir le palmarès détaillé dans une nouvelle fenêtre"
+            >
+                🏆 Voir le palmarès en détail
+            </a>
+
+        </section>
+
+    </div>
+
+
+    <!-- ==================================================
+         FLÈCHES DE NAVIGATION
+    ================================================== -->
+
+    <div class="fleches-navigation">
+
+        <button
+            type="button"
+            onclick="monterPage()"
+            title="Monter en haut de la page"
+        >
+            ↑
+        </button>
+
+        <button
+            type="button"
+            onclick="descendrePage()"
+            title="Descendre en bas de la page"
+        >
+            ↓
+        </button>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        /* ==================================================
+           CARROUSEL
+        ================================================== */
+
+        let currentSlide = 0;
+
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+
+
+        function showSlide(index) {
+
+            slides.forEach(function(slide) {
+
+                slide.classList.remove("active");
+
+            });
+
+
+            dots.forEach(function(dot) {
+
+                dot.classList.remove("active");
+
+            });
+
+
+            slides[index].classList.add("active");
+
+            dots[index].classList.add("active");
+
+            currentSlide = index;
+
+        }
+
+
+        function nextSlide() {
+
+            currentSlide++;
+
+            if (currentSlide >= slides.length) {
+
+                currentSlide = 0;
+
+            }
+
+            showSlide(currentSlide);
+
+        }
+
+
+        function previousSlide() {
+
+            currentSlide--;
+
+            if (currentSlide < 0) {
+
+                currentSlide = slides.length - 1;
+
+            }
+
+            showSlide(currentSlide);
+
+        }
+
+
+        /* Changement automatique toutes les 5 secondes */
+
+        setInterval(function() {
+
+            nextSlide();
+
+        }, 5000);
+
+
+        /* ==================================================
+           BOUTON MONTER
+        ================================================== */
+
+        function monterPage() {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+        /* ==================================================
+           BOUTON DESCENDRE
+        ================================================== */
+
+        function descendrePage() {
+
+            window.scrollTo({
+
+                top: document.documentElement.scrollHeight,
+
+                behavior: "smooth"
+
+            });
+
+        }
+function ouvrirMenu() {
+
+    const menu = document.getElementById("menuDeroulant");
+
+    menu.classList.toggle("ouvert");
+
+}
+
+
+function ouvrirMenu() {
+
+    const menu = document.getElementById("menuDeroulant");
+
+    menu.classList.toggle("ouvert");
+
+}
+
+
+// Fermer le menu lorsqu'on clique ailleurs
+
+document.addEventListener("click", function(event) {
+
+    const menu = document.getElementById("menuDeroulant");
+    const bouton = document.querySelector(".menu-button");
+
+    if (
+        menu.classList.contains("ouvert") &&
+        !menu.contains(event.target) &&
+        !bouton.contains(event.target)
+    ) {
+
+        menu.classList.remove("ouvert");
+
+    }
+
+});
+
+/* ==================================================
+   BOUTON RECHERCHE
+================================================== */
+
+function ouvrirRecherche() {
+
+    const recherche = document.getElementById("fenetreRecherche");
+    const compte = document.getElementById("fenetreCompte");
+
+    recherche.classList.toggle("ouverte");
+
+    compte.classList.remove("ouverte");
+
+    if (recherche.classList.contains("ouverte")) {
+
+        document.getElementById("champRecherche").focus();
+
+    }
+
+}
+
+
+/* ==================================================
+   RECHERCHE DANS LA PAGE
+================================================== */
+
+function rechercher(event) {
+
+    if (event && event.key !== "Enter") {
+        return;
+    }
+
+    const texte = document
+        .getElementById("champRecherche")
+        .value
+        .trim();
+
+    if (texte === "") {
+        return;
+    }
+
+    const contenu = document.body.innerText.toLowerCase();
+
+    if (contenu.includes(texte.toLowerCase())) {
+
+        alert("Le terme « " + texte + " » a été trouvé sur cette page.");
+
+    } else {
+
+        alert("Le terme « " + texte + " » n'a pas été trouvé.");
+
+    }
+
+}
+
+
+/* ==================================================
+   BOUTON COMPTE
+================================================== */
+
+function ouvrirCompte() {
+
+    const compte = document.getElementById("fenetreCompte");
+    const recherche = document.getElementById("fenetreRecherche");
+
+    compte.classList.toggle("ouverte");
+
+    recherche.classList.remove("ouverte");
+
+}
+
+
+/* ==================================================
+   FERMER LE COMPTE
+================================================== */
+
+function fermerCompte() {
+
+    document
+        .getElementById("fenetreCompte")
+        .classList.remove("ouverte");
+
+}
+    </script>
+
+
+</body>
+
+</html>

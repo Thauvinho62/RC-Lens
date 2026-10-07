@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Le Palmarès du RC Lens</title>
+
+    <style>
+
+        /* ==================================================
+           STYLE GÉNÉRAL
+        ================================================== */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #111, #d71920);
+            color: white;
+            text-align: center;
+        }
+
+
+        /* ==================================================
+           EN-TÊTE
+        ================================================== */
+
+        header {
+            background: #111;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 35px;
+            text-shadow: 2px 2px 4px black;
+        }
+
+
+        /* ==================================================
+           CONTENU PRINCIPAL
+        ================================================== */
+
+        main {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        main > p {
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+
+        /* ==================================================
+           CARTES DES TROPHÉES
+        ================================================== */
+
+        .trophies {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+
+        .trophy {
+            background: white;
+            color: #111;
+            width: 220px;
+            min-height: 310px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+
+        .trophy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+
+        /* ==================================================
+           IMAGES DES TROPHÉES
+        ================================================== */
+
+        .trophy img {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+
+        /* ==================================================
+           TITRES DES TROPHÉES
+        ================================================== */
+
+        .trophy h2 {
+            font-size: 22px;
+            margin: 10px 0;
+        }
+
+        .trophy p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .trophy strong {
+            display: block;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+
+        /* ==================================================
+           BOUTON RETOUR
+        ================================================== */
+
+        .back {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: #ffd500;
+            color: #111;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+
+        .back:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+
+        /* ==================================================
+           ADAPTATION AUX PETITS ÉCRANS
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            main {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .trophy {
+                width: 80%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         EN-TÊTE
+    ================================================== -->
+
+    <header>
+
+        <h1>⚒ LE PALMARÈS DU RC LENS ⚒</h1>
+
+    </header>
+
+
+    <!-- ==================================================
+         CONTENU
+    ================================================== -->
+
+    <main>
+
+        <p>
+            Retrouvez ici les principaux trophées remportés
+            par le Racing Club de Lens.
+        </p>
+
+
+        <!-- ==================================================
+             CARTES DES TROPHÉES
+        ================================================== -->
+
+        <div class="trophies">
+
+
+            <!-- ==================================================
+                 LIGUE 1
+            ================================================== -->
+
+            <div class="trophy">
+
+                <img
+                    src="ligue1.png"
+                    alt="Trophée de la Ligue 1"
+                    title="Champion de France 1997-1998"
+                >
+
+                <h2>Ligue 1</h2>
+
+                <p>
+                    Champion de France
+                </p>
+
+                <strong>
+                    1997/1998
+                </strong>
+
+            </div>
+
+
+            <!-- ==================================================
+                 COUPE DE LA LIGUE
+            ================================================== -->
+
+            <div class="trophy">
+
+                <img
+                    src="tropheedelaligue.png"
+                    alt="Trophée de la Coupe de la Ligue"
+                    title="Coupe de la Ligue 1998-1999"
+                >
+
+                <h2>Coupe de la Ligue</h2>
+
+                <p>
+                    Vainqueur de la compétition
+                </p>
+
+                <strong>
+                    1998/1999
+                </strong>
+
+            </div>
+
+
+            <!-- ==================================================
+                 COUPE DE FRANCE
+            ================================================== -->
+
+            <div class="trophy">
+
+                <img
+                    src="tropheecoupedefrance.png"
+                    alt="Trophée de la Coupe de France"
+                    title="Coupe de France 2025-2026"
+                >
+
+                <h2>Coupe de France</h2>
+
+                <p>
+                    Vainqueur de la compétition
+                </p>
+
+                <strong>
+                    2025/2026
+                </strong>
+
+            </div>
+
+
+            <!-- ==================================================
+                 TROPHÉE DES CHAMPIONS
+            ================================================== -->
+
+            <div class="trophy">
+
+                <img
+                    src="tropheedeschampions.png"
+                    alt="Trophée des Champions"
+                    title="Trophée des Champions 2026-2027"
+                >
+
+                <h2>Trophée des Champions</h2>
+
+                <p>
+                    Vainqueur de la compétition
+                </p>
+
+                <strong>
+                    2026/2027
+                </strong>
+
+            </div>
+
+
+            <!-- ==================================================
+                 LIGUE 2
+            ================================================== -->
+
+            <div class="trophy">
+
+                <img
+                    src="tropheeligue2.png"
+                    alt="Trophée de la Ligue 2"
+                    title="Champions de Ligue 2"
+                >
+
+                <h2>Ligue 2 BKT</h2>
+
+                <p>
+                    Champion de deuxième division
+                </p>
+
+                <strong>
+                    1936/1937<br>
+                    1948/1949<br>
+                    1972/1973<br>
+                    2008/2009
+                </strong>
+
+            </div>
+
+
+            <!-- ==================================================
+                 COUPE INTERTOTO
+            ================================================== -->
+
+            <div class="trophy">
+
+                <img
+                    src="coupeintertoto.png"
+                    alt="Trophée de la Coupe Intertoto"
+                    title="Coupe Intertoto 2004-2005"
+                >
+
+                <h2>Coupe Intertoto</h2>
+
+                <p>
+                    Vainqueur de la compétition
+                </p>
+
+                <strong>
+                    2004/2005
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==================================================
+             RETOUR AU SITE PRINCIPAL
+        ================================================== -->
+
+        <a
+            class="back"
+            href="RC Lens Web.html"
+        >
+            ← Retour au site principal
+        </a>
+
+
+    </main>
+
+
+</body>
